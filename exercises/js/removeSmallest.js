@@ -7,3 +7,7 @@ function removeSmallest(numbers) {
 }
 numbers = [5, 3, 2, 1, 4];
 console.log(removeSmallest(numbers))
+
+let a;
+a.push(1);
+console.log(a);
