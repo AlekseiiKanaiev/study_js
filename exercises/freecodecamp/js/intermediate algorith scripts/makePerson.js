@@ -1,7 +1,7 @@
 var Person = function(firstAndLast) {
     // Complete the method below and implement the others similarly
-    var firstName;
-    var lastName;
+    let firstName;
+    let lastName;
     this.getFullName = function() {
       return `${firstName} ${lastName}`;
     };
