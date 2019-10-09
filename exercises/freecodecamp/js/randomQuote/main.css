@@ -2,10 +2,11 @@ body{
     text-align: center;
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 18px;
     background-color: #000;
     color: #000;
-    transition: all 5s ease;
+    transition: background-color 2s, color 2s;
+    /* transition: color 2s ease; */
 }
 .wrap{
     display: flex;
@@ -19,14 +20,18 @@ body{
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     width: 50%;
+    min-width: 220px;
     height:fit-content;
     min-height: 40%;
     background-color: #fff;
     border-radius: 3px;
-    vertical-align: baseline;
     padding: 20px;
+}
+#quote-message{
+    opacity: 0;
+    transition: opacity 2s ease;
 }
 #text{
     font-size: 28px;
@@ -35,6 +40,49 @@ body{
     padding-top: 10px;
     text-align: right;
 }
+#buttons{
+    display: flex;
+    margin: 30px 20px 0px 20px;
+    font-size: 20px;
+    align-items: center;
+}
+#buttons>*{
+    margin: 0 5px 0 5px;
+    transition: opacity 1s ease, background-color 2s;
+    
+}
+#buttons>*:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    
+}
+.button{
+    font-size: 46px;
+    transition: opacity 1s ease, color 2s;
+}
+
+#new-quote{
+    margin-left: auto;
+    border: 0 solid #000;
+    border-radius: 4px;
+    color: #fff;
+    height: 40px;
+    width: fit-content;
+    font-size: 16px;
+}
+
 #madeby{
     color: #fff;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 680px){
+    #quote-box{
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 460px){
+    #buttons {
+        margin: 20px 10px  0px 10px;
+    }
 }

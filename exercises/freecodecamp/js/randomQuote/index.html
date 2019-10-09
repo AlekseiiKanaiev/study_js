@@ -17,11 +17,22 @@
 <body>
     <div class="wrap">
         <div id="quote-box">
-            <div id="text"><i class="fa fa-quote-left"></i> </div>
-            <div id="author"></div>
-            <div id="new-quote"></div>
-            <div id="tweet-qoute"></div>
-            <div id="tumblr-quote"></div>
+            <div id="quote-message">
+                <div id="text">
+                    <i class="fa fa-quote-left"></i>
+                    <span id="quote"></span>
+                </div>
+                <div id="author"></div>
+            </div>
+            <div id="buttons">
+                <a href="https://twitter.com/intent/tweet" id="tweet-quote" target="_blank">
+                    <i class="fa fa-twitter-square button" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.tumblr.com/tagged/thumbl" id="tumblr-quote" target="_blank">
+                    <i class="fa fa-tumblr-square button" aria-hidden="true"></i>
+                </a>
+                <button id="new-quote">New quote</button>
+            </div>
         </div>
         <footer>
             <div id="madeby">Oleksii Kanaiev</div>
