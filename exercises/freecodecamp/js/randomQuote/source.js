@@ -74,11 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
 window.onload = () => {
     setQuote();
     document.getElementById('new-quote').addEventListener('click', () => {
-        document.getElementById('quote-message').style.opacity = 0, 500
+        document.getElementById('quote-message').style.opacity = 0;
         setTimeout(() => {
             setQuote();
             colorize();
-        }, 1200)
+        }, 1200);
     });
 }
 
