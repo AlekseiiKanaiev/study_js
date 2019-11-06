@@ -12,15 +12,20 @@ function delayDecorator(func, delay){
 say2000 = delayDecorator(say, 2000);
 say1000 = delayDecorator(say, 1000);
 
-say2000('Hello');
-say1000('test');
+// say2000('Hello');
+// say1000('test');
 
 let obj = {
-    say1(str){
+    say(str){
         console.log(str);
+    },
+    sayLoud(str){
+        alert(str);
     }
 }
 
-obj.say1 = delayDecorator(obj.say1, 3000);
+obj.say = delayDecorator(obj.say, 3000);
+obj.sayLoud = delayDecorator(obj.sayLoud, 3000);
 
-obj.say1('Object test')
+obj.say('Object test')
+obj.sayLoud('Object test alert')
