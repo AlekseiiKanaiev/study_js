@@ -1,0 +1,92 @@
+body{
+    background-color: #8d8d8d;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+main{
+    width: fit-content;
+    border: 7px solid orange;
+    margin: auto;
+    background-color: #b3b3b3;
+}
+#logo{
+    text-align: right;
+    font-size: 20px;
+    margin: 5px 5px 0px 0px;
+
+}
+#drum-machine{
+    display: flex;
+    justify-content: center;
+    margin: 0px 25px 25px 25px;
+}
+#drum-pads{
+    border-spacing: 10px;
+    margin-right: 25px;
+}
+td{
+    width: 100px;
+    height: 80px;
+    background-color: grey;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 3px 3px 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.inactivePadStyle{
+    background-color: grey;
+    margin-top: 13px;
+    box-shadow: 0px 3px grey;
+}
+.activePadStyle {
+    background-color: orange;
+    box-shadow: 0 3px orange;
+    margin-top: 13px;
+}
+
+#controls{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.select{
+    margin: auto;
+    width: 50px;
+    height: 17px;
+    background-color: black;
+    border: 3px solid #000;
+}
+.inner{
+    width: 25px;
+    height: 17px;
+    background-color: blue;
+    float: left;
+    cursor: pointer;
+}
+#display{
+    width: 200px;
+    height: 20px;
+    background-color: grey;
+    padding: 15px;
+    margin: 0;
+}
+#volume{
+    cursor: pointer;
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    background-color: rgb(157, 150, 142);
+    border: 1px solid #000;
+    box-shadow: 3px 3px 5px;
+   
+}
+#volume:focus{
+    outline: none;
+}
