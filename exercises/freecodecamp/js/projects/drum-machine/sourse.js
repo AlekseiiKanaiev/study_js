@@ -97,10 +97,7 @@ url: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3'
 let soundVolume = 0.3;
 let isPower = true;
 let set = bankOne;
-
-str = `<p> Hello </p>`
-
-
+let timer;
 
 function setContent(set){
     let content = '';
@@ -115,21 +112,14 @@ function setContent(set){
         content +=`</tr>`
     
     }
-    return content;
-}
+    document.getElementById('drum-pads').innerHTML = content;
 
-
-function addDrumPadListener(set){
-  for (let pad of set) {
-    document.getElementById(pad.id).addEventListener('click', (e) => {
-      // console.log(e);
-      action(pad)
-    })
-  }
-}
-
-function removeStyle(id, name){
-  document.getElementById(id).classList.remove(name)
+    for (let pad of set) {
+      document.getElementById(pad.id).addEventListener('click', (e) => {
+        // console.log(e);
+        action(pad);
+      })
+    }
 }
 
 function action(pad){
@@ -145,6 +135,10 @@ function action(pad){
   }
 }
 
+function removeStyle(id, name){
+  document.getElementById(id).classList.remove(name)
+}
+
 function playSound(keyName){
   const sound = document.getElementById(keyName);
   sound.volume = soundVolume;
@@ -154,34 +148,28 @@ function playSound(keyName){
 
 function showDisplay(text){
   // console.log(text);
+  if (timer) clearTimeout(timer);
   document.getElementById('display').innerHTML = text;
 }
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('drum-pads').innerHTML = setContent(set);
+    setContent(set);
 });
 
 window.onload = () => {
 
-    // console.log(document.getElementById('drum-pads'));
-    let timer;
-    let isBank = true;
     const volumeBar = document.getElementById('volume');
     const powerSelect = document.getElementById('power-select').children[0];
     const bankSelect = document.getElementById('bank-select').children[0];
 
-    addDrumPadListener(set);
-
     document.addEventListener('keypress', (e) => {
-      // console.log(e.code.slice(-1));
       let pad = set.filter(el => el.keyTrigger === e.code.slice(-1));
-      // console.log(pad);
       if (pad.join()) action(pad[0])
     })
 
-    volumeBar.addEventListener('click', (e) => {
-      // console.log(e);
-      if (timer) clearTimeout(timer);
+    volumeBar.addEventListener('click', () => {
       soundVolume = volumeBar.value;
       showDisplay(Math.round(soundVolume*100));
       timer = setTimeout(showDisplay, 3000, '');
@@ -195,7 +183,6 @@ window.onload = () => {
       } else {
         powerSelect.children[0].style.float = 'right';
         volumeBar.setAttribute("disabled", "disabled");
-        if (timer) clearTimeout(timer);
         showDisplay('');
       }
     });
@@ -205,15 +192,13 @@ window.onload = () => {
         if (set === bankOne) {
           set = bankTwo;
           bankSelect.children[0].style.float = 'right';
-          if (timer) clearTimeout(timer);
           showDisplay('Smooth Piano Kit');
         } else {
           set = bankOne;
           bankSelect.children[0].style.float = 'left';
-          if (timer) clearTimeout(timer);
           showDisplay('Heater Kit');
         }
-        document.getElementById('drum-pads').innerHTML = setContent(set);
+        setContent(set);
       }
     });
 }

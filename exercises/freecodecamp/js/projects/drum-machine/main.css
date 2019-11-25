@@ -27,6 +27,7 @@ main{
     margin: 0px 25px 25px 25px;
 }
 #drum-pads{
+    border-collapse: separate;
     border-spacing: 10px;
     margin-right: 25px;
 }
@@ -39,6 +40,9 @@ td{
     box-shadow: 3px 3px 5px;
     text-transform: uppercase;
     cursor: pointer;
+}
+td p{
+    margin: auto;
 }
 .inactivePadStyle{
     background-color: grey;
@@ -72,9 +76,9 @@ td{
 }
 #display{
     width: 200px;
-    height: 20px;
+    height: 40px;
+    line-height: 40px;
     background-color: grey;
-    padding: 15px;
     margin: 0;
 }
 #volume{
@@ -85,7 +89,6 @@ td{
     background-color: rgb(157, 150, 142);
     border: 1px solid #000;
     box-shadow: 3px 3px 5px;
-   
 }
 #volume:focus{
     outline: none;
