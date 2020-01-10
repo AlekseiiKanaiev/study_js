@@ -5,23 +5,21 @@ window.onload = () => {
             div.classList.add('circle-base-style');
             div.style.top = cy + 'px';
             div.style.left = cx + 'px';
-            show = setInterval(() => {
-                const width = parseInt(div.style.width) || 0;
-                const height = parseInt(div.style.height) || 0;
-                if (width < 2 * radius) {
-                    div.style.width = 1 + width + 'px';
-                    div.style.height = 1 + height + 'px';
-                } else {
-                    clearInterval(show);
+            setTimeout(() => {
+                div.style.width = 2 * radius + 'px';
+                div.style.height = 2 * radius + 'px';
+                div.style.margin = `-${radius}px -${radius}px`; // for scaling from center
+                document.addEventListener('transitionend', function hadler() {
+                    document.removeEventListener('transitionend', hadler);
                     res(div);
-                }
-            }, 10);
+                })
+            });
             document.body.append(div);
             
         })
     }
 
-    showCirclePromise(100, 100, 150)
+    showCirclePromise(200, 200, 100)
     .then(
         (div) => {
             div.innerText = 'Hello, World!';
