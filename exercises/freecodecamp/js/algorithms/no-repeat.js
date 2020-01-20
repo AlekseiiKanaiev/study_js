@@ -1,4 +1,5 @@
 function permutator(str) {
+// search number of permutations in string
     let arr = Array.from(str);
     let charSet = new Set(arr);
     let counter = 0;
@@ -33,4 +34,4 @@ let a = [1, 2, 3]
 let b = a.splice(0, 1);
 console.log(a);
 a.splice(0, 0, b[0])
-console.log(a);
+console.log(permutator('asda'));
