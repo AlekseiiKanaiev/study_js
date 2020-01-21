@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+    <body>
+        <ul>
+            <li>Животные
+                <ul>
+                    <li>Млекопитающие
+                        <ul>
+                            <li>Коровы</li>
+                            <li>Ослы</li>
+                            <li>Собаки</li>
+                            <li>Тигры</li>
+                        </ul>
+                    </li>
+                    <li>Другие
+                        <ul>
+                            <li>Змеи</li>
+                            <li>Птицы</li>
+                            <li>Ящерицы</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Рыбы
+                <ul>
+                    <li>Аквариумные
+                        <ul>
+                            <li>Гуппи</li>
+                            <li>Рыба-ангел</li>
+                        </ul>
+                    </li>
+                    <li>Морские
+                        <ul>
+                            <li>Морская форель</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <script>
+            let lis = document.querySelectorAll('li');
+            console.dir(lis);
+            function chidrenCount(el){
+                // console.dir(el.children.length);
+                let children = 0;
+                function inner(el){
+                    if (el.childElementCount !== 0) {
+                        for (let i = 0; i < el.children.length; i++) {
+                            if (el.children[i].nodeName === 'LI'){
+                                children++;
+                            }
+                            inner(el.children[i]);
+                        }
+                    }
+                    return children;
+                }
+                return inner(el);
+                
+            }
+            for (let li of lis){
+                console.log(li.firstChild.data.trim());
+                console.log(chidrenCount(li));
+                console.log(li.getElementsByTagName('li').length);
+            }
+
+            console.dir(document);
+
+            console.log(document.constructor.name); // HTMLDocument
+            console.log(HTMLDocument.prototype.constructor.name); // HTMLDocument
+            console.log(HTMLDocument.prototype.__proto__.constructor.name); // Document
+            console.log(Document.prototype.__proto__.constructor.name); // Node
+
+            console.log(document instanceof HTMLElement); // false
+            console.log(document instanceof Element); // false
+            console.log(document instanceof Node); // true
+            console.log(document instanceof EventTarget); // true
+        </script>
+
+    </body>
+</html>
