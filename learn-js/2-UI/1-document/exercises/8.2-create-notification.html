@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8.2-notification</title>
+</head>
+<body>
+    <style>
+        .welcome{
+            position: absolute;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 24px;
+        }
+    </style>
+    <script>
+        function showNotification(options){
+            let notf = document.createElement('div');
+            notf.className = options.className;
+            notf.style.top = options.top + 'px';
+            notf.style.right = options.right + 'px'; 
+            notf.textContent = options.html;
+            document.body.append(notf);
+            setTimeout(() => notf.remove(), 1500);
+        }
+        showNotification({
+            top: 10, // 10px от верхней границы окна (по умолчанию 0px)
+            right: 10, // 10px от правого края окна (по умолчанию 0px)
+            html: "Hello!", // HTML-уведомление
+            className: "welcome" // дополнительный класс для div (необязательно)
+        });
+    </script>
+</body>
+</html>
