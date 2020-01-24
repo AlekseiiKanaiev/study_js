@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.6-create-list</title>
+</head>
+<body>
+    <p>My list</p>
+    <ol id = "list"></ol>
+
+    <script>
+        function add(){
+            let li = document.createElement('li');
+            let text = prompt('Add punk to your list', '');
+            if (text) {
+                li.append(text)
+                list.append(li);
+                setTimeout(add);
+            }
+        }
+        setTimeout(add);
+    </script>
+</body>
+</html>

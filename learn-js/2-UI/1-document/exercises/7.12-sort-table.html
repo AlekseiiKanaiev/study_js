@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.12-sort-table</title>
+</head>
+<body>
+    <table id = "table">
+        <tr>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Возраст</th>
+        </tr>
+        <tr>
+          <td>John</td>
+          <td>Smith</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Pete</td>
+          <td>Brown</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Ann</td>
+          <td>Lee</td>
+          <td>5</td>
+        </tr>
+    </table>
+    <script>
+        function sort(){
+            
+            let rows = Array.from(document.querySelectorAll('tr')).slice(1);
+            
+            isInverseSort ?
+                rows.sort((a, b) => (a.cells[0].textContent < b.cells[0].textContent) ? 1 : -1) :
+                rows.sort((a, b) => (a.cells[0].textContent > b.cells[0].textContent) ? 1 : -1);
+
+            table.tBodies[0].append(...rows);
+            //table.append(...rows);
+
+            /* let users = [];
+            for (let row of rows){
+                let user = [];
+                for (let td of row.children){
+                    if (td.nodeName === 'TD'){
+                        user.push(td.textContent);
+                    }
+                }
+                if (user.length > 0) users.push(user);
+            }
+            
+            isInverseSort ? 
+                users.sort((a, b) => (a[0] < b[0]) ? 1 : -1) :
+                users.sort((a, b) => (a[0] > b[0]) ? 1 : -1);
+            
+                for (let i = 0; i < users.length; i++){
+                for (let j = 0; j < users[i].length; j++){
+                    rows[i+1].children[j].textContent = users[i][j];
+                }
+            } */
+            isInverseSort = !isInverseSort;
+        }
+
+        
+        let isInverseSort = false;
+        let button = document.createElement('button');
+        button.textContent = 'Sort';
+        document.body.append(button);
+        button.addEventListener('click', sort);
+    </script>
+</body>
+</html>

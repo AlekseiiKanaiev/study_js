@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7.8-tree-count</title>
+</head>
+<body>
+    <ul>
+        <li>Животные
+          <ul>
+            <li>Млекопитающие
+              <ul>
+                <li>Коровы</li>
+                <li>Ослы</li>
+                <li>Собаки</li>
+                <li>Тигры</li>
+              </ul>
+            </li>
+            <li>Другие
+              <ul>
+                <li>Змеи</li>
+                <li>Птицы</li>
+                <li>Ящерицы</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Рыбы
+          <ul>
+            <li>Аквариумные
+              <ul>
+                <li>Гуппи</li>
+                <li>Скалярии</li>
+              </ul>
+            </li>
+            <li>Морские
+              <ul>
+                <li>Морская форель</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+    </ul>
+
+    <script>
+        function countChildren(element) {
+            let res = 0;
+            function add(elem){
+                if (elem.children.length){
+                    for (let el of elem.children){
+                        if (el.nodeName === 'LI') res++;
+                        add(el);
+                    } 
+                }
+                return res;
+            }
+            return add(element)
+        }
+        
+        let lis = document.querySelectorAll('li');
+        for (let li of lis){
+            //let count = countChildren(li);
+            let count = li.querySelectorAll('li').length;
+            if (count) li.prepend(`[${count}] `);
+        }
+    </script>
+</body>
+</html>
