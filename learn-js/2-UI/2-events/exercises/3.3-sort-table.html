@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.3-sort-table</title>
+</head>
+<body>
+    <style>
+        th{
+            cursor: pointer;
+        }
+    </style>
+    <table id="grid">
+        <thead>
+          <tr>
+            <th data-type="number">Возраст</th>
+            <th data-type="string">Имя</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>35</td>
+            <td>Вася</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Петя</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Коля</td>
+          </tr>
+          <tr>
+            <td>111</td>
+            <td>Антон</td>
+          </tr>
+        </tbody>
+      </table>
+      <script>
+          let invertSortNum = false;
+          let invertSortStr = false;
+          
+          function sort(colNum, type){
+            let tBody = grid.querySelector('tbody');
+            let rows = Array.from(tBody.rows);
+            switch (type){
+              case 'number':
+                (invertSortNum) ?
+                    rows.sort((a, b) => (+a.cells[colNum].textContent > +b.cells[colNum].textContent) ? -1 : 1) :
+                    rows.sort((a, b) => (+a.cells[colNum].textContent < +b.cells[colNum].textContent) ? -1 : 1);
+                invertSortNum = !invertSortNum;
+                invertSortStr = false;
+                break;
+              case 'string':
+                (invertSortStr) ?
+                    rows.sort((a, b) => (a.cells[colNum].textContent > b.cells[colNum].textContent) ? -1 : 1) :
+                    rows.sort((a, b) => (a.cells[colNum].textContent < b.cells[colNum].textContent) ? -1 : 1);
+                invertSortStr = !invertSortStr;
+                invertSortNum = false;
+                break;
+            }
+            tBody.append(...rows);
+          }
+
+          grid.addEventListener('click', (e) => {
+              if (e.target.nodeName === 'TH' && e.target.dataset){
+                // console.log(e.target.cellIndex)
+                sort(e.target.cellIndex, e.target.dataset.type)
+              }
+          });
+      </script>
+</body>
+</html>

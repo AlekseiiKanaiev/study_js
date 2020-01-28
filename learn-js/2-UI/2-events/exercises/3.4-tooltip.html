@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.4-tooltip</title>
+</head>
+<body>
+    <style>
+        body{
+            height: 1000px;
+        }
+        .text{
+            width: 400px;
+            margin-bottom: 20px;
+        }
+        button{
+            position: relative;
+            margin: 10px;
+        }
+        .tooltip{
+            text-align: center;
+            position: fixed;
+            border: 1px solid #000;
+            background-color: grey;
+            border-radius: 5px;
+            width: fit-content ;
+            z-index: 1000;
+            padding: 10px;
+        }
+    </style>
+    <div class="text">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe placeat quidem eos ut porro excepturi quaerat repellendus. Recusandae expedita voluptas eveniet magni nemo iusto? Quasi dolor blanditiis optio! Possimus aspernatur, repellendus temporibus ipsam mollitia eaque tempore iste nisi minus fugiat et quis quos recusandae facere nesciunt corrupti aliquid quidem dolorum.
+    </div>
+    <button data-tooltip="эта подсказка длиннее, чем элемент">Короткая кнопка</button>
+    <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+    <script>
+        function show(e){
+            if (e.target.nodeName === 'BUTTON' && e.target.dataset){
+                let button = e.target;
+                let coords = button.getBoundingClientRect();
+                let div = document.createElement('div');
+                div.innerHTML =button.dataset.tooltip;
+                div.classList = 'tooltip';
+                button.append(div);
+                div.style.top = (coords.y > div.offsetHeight + 5) ? 
+                    coords.y - div.offsetHeight -5 + 'px' :
+                    coords.y + button.offsetHeight + 5 + 'px';
+                div.style.left = button.offsetLeft + 'px';
+            }
+        }
+
+        function hide(e) {
+            let div = e.target.querySelector('.tooltip');
+            if (div) div.remove();
+        }
+
+        document.addEventListener('mouseover', show);
+        document.addEventListener('mouseout', hide);
+    </script>
+</body>
+</html>
