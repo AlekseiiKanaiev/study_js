@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    <style>
+        #carousel{
+            width: 400px;
+            margin: auto;
+            position: relative;
+            border-radius: 10px;
+            background-color: #c0c0c0;
+            padding: 10px 40px;
+        }
+        .arrow{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: 60px;
+            cursor: pointer;
+            display: block;
+        }
+        .arrow:focus{
+            outline: none;
+        }
+        #back{
+            left: 5px;
+        }
+        #forward{
+            right: 5px;
+        }
+        ul{
+            display: block;
+            list-style: none;
+            height: 130px;
+            width: 3000px;
+            margin-left: 0px;
+            padding: 0;
+            margin: 0;
+            /* important иначе не корректное отображение элементов*/
+            font-size: 0;
+            transition: margin-left 0.5s;
+            -o-transition: margin-left 0.5s;
+            -moz-transition: margin-left 0.5s;
+            -webkit-transition: margin-left 0.5s;
+        }
+        ul li{
+            display: inline-block;
+        }
+        ul li img{
+            width: 130px;
+            height: 130px;
+            display: block;
+        }
+        #galery {
+            width: 390px;
+            margin: auto;
+            overflow: hidden;
+        }
+        span{
+            display: none;
+        }
+    </style>
+  <!-- создайте свою разметку со стилями -->
+  <div id="carousel">
+    <button id = "back" class="arrow">⇦</button>
+    <div id="galery">
+        <ul id = "images">
+            <li><img src="https://ru.js.cx/carousel/1.png"></li>
+            <li><img src="https://ru.js.cx/carousel/2.png"></li>
+            <li><img src="https://ru.js.cx/carousel/3.png"></li>
+            <li><img src="https://ru.js.cx/carousel/4.png"></li>
+            <li><img src="https://ru.js.cx/carousel/5.png"></li>
+            <li><img src="https://ru.js.cx/carousel/6.png"></li>
+            <li><img src="https://ru.js.cx/carousel/7.png"></li>
+            <li><img src="https://ru.js.cx/carousel/8.png"></li>
+            <li><img src="https://ru.js.cx/carousel/9.png"></li>
+            <li><img src="https://ru.js.cx/carousel/10.png"></li>
+        </ul>
+    </div>
+    <button id = "forward" class="arrow">⇨</button>
+  </div>
+    
+    
+
+    <script>
+        // отметить картинки для удобства разработки
+        // этот код может быть удалён по вашему усмотрению
+        let i = 1;
+        for(let li of carousel.querySelectorAll('li')) {
+            li.style.position = 'relative';
+            li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+            i++;
+        }
+        console.dir(images);
+        let imgInRow = 3;
+        let imgWidth = 130;
+        let imgRowWidth = imgInRow * imgWidth;
+        document.getElementById('back').addEventListener('click', () => {
+            let curMargin = (images.style.marginLeft) ? parseInt(images.style.marginLeft) : 0;
+            console.log(curMargin);
+            if(curMargin !== 0){
+               images.style.marginLeft = curMargin + imgRowWidth + 'px';
+            }
+        });
+
+        document.getElementById('forward').addEventListener('click', () => {
+            let curMargin = (images.style.marginLeft) ? parseInt(images.style.marginLeft) : 0;
+            console.log(curMargin);
+            if (curMargin > -imgRowWidth * imgInRow){
+                images.style.marginLeft = curMargin - imgRowWidth + 'px';
+            }
+        });
+        // ...ваш код, который сделает карусель рабочей
+    </script>
+
+</body>
+</html>

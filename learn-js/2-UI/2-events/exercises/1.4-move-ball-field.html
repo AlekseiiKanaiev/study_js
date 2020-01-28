@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.4-move ball</title>
+</head>
+<body>
+    <style>
+        body{
+            height: 1000px;
+        }
+        #field {
+            margin-top: 100px;
+            width: 400px;
+            height: 250px;
+            border: 10px solid black;
+            background-color: #00FF00;
+            overflow: hidden;
+        }
+        #ball{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: brown;
+            position: absolute;
+            z-index: 100;
+            transition: all 1s ease-out;
+            -o-transition: all 1s ease-out;
+            -moz-transition: all 1s ease-out;
+            -webkit-transition: all 1s ease-out;
+        }
+    </style>
+    <div id="field"></div>
+    <div id="ball"></div>
+    <script>
+        console.log(field.clientLeft);
+        if (!ball.style.top) ball.style.top = ball.offsetTop + 'px';
+        if (!ball.style.left) ball.style.left = ball.offsetLeft + 'px';
+        field.addEventListener('click', (e) => {
+            // console.log(e);
+            let maxWidth = field.offsetLeft + field.clientLeft + field.clientWidth -  ball.offsetWidth / 2;
+            let maxHeight = field.offsetTop + field.clientTop + field.clientHeight - ball.offsetHeight / 2;
+            let minWidth = field.offsetLeft + field.clientLeft + ball.offsetWidth / 2;
+            let minHeight = field.offsetTop + field.clientTop + ball.offsetWidth / 2
+            if (e.pageX <= maxWidth && e.pageX >= minWidth && e.pageY <= maxHeight && e.pageY >= minHeight){
+                ball.style.top =  e.pageY - ball.offsetHeight / 2 + 'px';
+                ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    <style>
+      body{
+        height: 1000px;
+      }
+        #messages{
+            width: 50%;
+            margin: auto;
+            background-color: wheat;
+        }
+        .pane{
+            border-top: 2px solid yellow;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        .pane h3{
+          margin: 0;
+        }
+        .pane p{
+          margin: 0;
+        }
+        .remove-button{
+          color: darkred;
+          background-color: transparent;
+          border: none;
+          position: absolute;
+          cursor: pointer;
+          padding: 0;
+          font-size: 20px;
+          display: block;
+          right: 10px;
+          top: 0;
+          width: 24px;
+          height: 24px;
+        }
+    </style>
+
+  <div id = "messages">
+    <div class="pane">
+      <h3>Лошадь</h3>
+      <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+    </div>
+    <div class="pane">
+      <h3>Осёл</h3>
+      <p>Домашний осёл (лат. Equus asinus asinus), или ишак, — одомашненный подвид дикого осла (Equus asinus), сыгравший важную историческую роль в развитии хозяйства и культуры человека и по-прежнему широко в хозяйстве многих развивающихся стран.</p>
+    </div>
+    <div class="pane">
+      <h3>Кошка</h3>
+      <p>Кошка, или домашняя кошка (лат. Felis silvestris catus), — домашнее животное, одно из наиболее популярных(наряду с собакой) «животных-компаньонов». Являясь одиночным охотником на грызунов и других мелких животных, кошка — социальное животное, использующее для общения широкий диапазон звуковых сигналов.</p>
+    </div>
+  </div>
+  <script>
+    function htmlFromString(str){
+      let div = document.createElement('div');
+      div.innerHTML = str;
+      return div.firstChild;
+    }
+    let html = '<button class="remove-button">[x]</button>';
+    let panes = document.querySelectorAll('.pane');
+    for (let elem of panes){
+      elem.insertAdjacentHTML('afterBegin',html);
+      elem.firstChild.addEventListener('click', () => {
+        elem.remove();
+      })
+    }
+
+  </script>
+</body>
+</html>

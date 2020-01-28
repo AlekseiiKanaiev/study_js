@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.5-sliding-menu</title>
+</head>
+<body>
+    <style>
+        #menu-button{
+            cursor: pointer;
+        }
+        span{
+            display: inline-block;
+        }
+        #opened-icon, #closed-icon{
+            padding-right: 5px;
+            width: 15px;
+        }
+        .menu{
+            background-color: grey;
+            margin: 0;
+            overflow: hidden;
+            height: auto;
+            max-height: 0px;
+            width: fit-content;
+            transition: max-height 1s ease;
+            -o-transition: max-height 1s ease;
+            -moz-transition: max-height 1s ease;
+            -webkit-transition: max-height 1s ease;
+        }
+        ul{
+            margin-right: 20px;
+        }
+        .expand{
+            max-height: 100px;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+    <button id = 'menu-button'>
+        <span id="closed-icon">▶</span><span id="opened-icon" class = "hide">▼</span> Сладости (нажми меня)!
+    </button> 
+    <div id="menu" class = "menu">
+        <ul>
+            <li>Пирожное</li>
+            <li>Пончик</li>
+            <li>Мёд</li>
+        </ul>
+    </div>
+    <script>
+        let menuBut = document.getElementById('menu-button');
+        menuBut.addEventListener('click', (e) => {
+            menu.classList.toggle('expand');
+            let oIcon = document.getElementById('opened-icon');
+            let cIcon = document.getElementById('closed-icon');
+            oIcon.classList.toggle('hide');
+            cIcon.classList.toggle('hide');
+        });
+    </script>
+</body>
+</html>
