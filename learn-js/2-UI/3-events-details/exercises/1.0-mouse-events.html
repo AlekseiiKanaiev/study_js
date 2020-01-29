@@ -1,0 +1,27 @@
+<style>
+    body{
+        height: 1000px;
+    }
+</style>
+<div>
+    <input onmousedown="return logMouse(event)" 
+    onmouseup="return logMouse(event)" 
+    onclick="logMouse(event)"
+    oncontextmenu="logMouse(event)"
+    ondblclick="logMouse(event)"
+    onmousemove="logMouse(event)"
+    value="Click me"
+    style="margin: 100px; height: 40px">
+</div>
+
+<script>
+    function logMouse(e){
+        console.log(e.type);
+        if (e.type === 'mousemove'){
+            console.log(`Client: ${event.clientX} : ${event.clientY}`);
+            console.log(`Page: ${event.pageX} : ${event.pageY}`);
+        } 
+        if (e.which) console.log(e.which);
+    }
+</script>
+
