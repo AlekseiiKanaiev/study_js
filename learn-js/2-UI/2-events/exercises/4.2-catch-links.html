@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #contents {
+      padding: 5px;
+      border: 1px green solid;
+    }
+  </style>
+</head>
+
+<body>
+
+  <fieldset id="contents">
+    <legend>#contents</legend>
+    <p>
+      Как насчёт того, чтобы прочитать 
+      <a href="http://wikipedia.org" target="blank">Википедию</a> 
+      или посетить 
+      <a href="http://w3.org" target="blank"><i>W3.org</i></a> и узнать о современных стандартах?
+    </p>
+  </fieldset>
+  <script>
+      contents.addEventListener('click', (e) => {
+        if (e.target.closest('a')){
+            let link = e.target.closest('a');
+            let accept = confirm(`DO you realy want to follow the link: ${link.href}`);
+            if (!accept) e.preventDefault();
+        }
+      });
+  </script>
+</body>
+</html>
