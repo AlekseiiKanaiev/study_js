@@ -1,0 +1,132 @@
+<body>
+    <style>
+        body{
+            height: 1000px;
+        }
+        #ball{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: brown;
+        }
+        #container{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            border: 1px solid red;
+            margin: 200px;
+        }
+    </style>
+    <div id="content">
+        <div id="ball"></div>
+    </div>
+    <div id="container" class="droppable">
+
+    </div>
+    <!-- <button id = 'button'>Push</button> -->
+    <script>
+        console.dir(window);
+
+        let currentDroppable = null;
+
+        function getScrollBarWidth(){
+            let result = 0;
+            if (window.innerHeight < document.body.offsetHeight){
+                let div = document.createElement('div');
+                div.style.overflowY = 'scroll';
+                div.style.height = '50px';
+                div.style.width = '50px';
+                document.body.append(div);
+                result = div.offsetWidth - div.clientWidth;
+                div.remove();
+            }
+            return result;
+        }
+
+        function leaveDroppable(){
+            container.style.backgroundColor = '';
+        }
+
+        function enterDroppable(){
+            container.style.backgroundColor = 'lightyellow';
+        }
+
+        ball.ondragstart = function() {
+            return false;
+          };
+
+        ball.onmousedown = function(event) { // (1) отследить нажатие
+            content.style.height = ball.offsetHeight + 'px';
+
+            //  для удерживания мяча в любой точке
+            let shiftX = event.clientX - ball.getBoundingClientRect().left;
+            let shiftY = event.clientY - ball.getBoundingClientRect().top;
+              
+            // (2) подготовить к перемещению:
+            // разместить поверх остального содержимого и в абсолютных координатах
+            ball.style.position = 'absolute';
+            ball.style.zIndex = 1000;
+            // переместим в body, чтобы мяч был точно не внутри position:relative
+            document.body.append(ball);  
+            // и установим абсолютно спозиционированный мяч под курсор
+          
+            moveAt(event.pageX, event.pageY);
+          
+            // передвинуть мяч под координаты курсора
+            // и сдвинуть на половину ширины/высоты для центрирования
+            function moveAt(pageX, pageY) {
+                // console.log(pageX, pageY);
+
+                // для удерживания мяча в центре
+                let left = pageX - ball.offsetWidth / 2 ;
+                let right = pageX + ball.offsetWidth;
+                let top = pageY - ball.offsetHeight / 2;
+                //  для удерживания мяча в любой точке
+                left = pageX - shiftX;
+                top = pageY - shiftY;
+                // console.log(top);
+                if (left <=  0){
+                    ball.style.left = '0px';
+                } else if (right >= window.innerWidth){
+                    ball.style.left = window.innerWidth - ball.offsetWidth - getScrollBarWidth() + 'px';
+                } else {
+                    ball.style.left = left + 'px';
+                }
+                ball.style.top =  (top > 0) ? top + 'px' : '0px';
+            }
+            
+            function onMouseMove(event) {
+              moveAt(event.pageX, event.pageY);
+              ball.hidden = true;
+              let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+              ball.hidden = false;
+              if(!elemBelow) return;
+              let droppableBelow = elemBelow.closest('.droppable');
+              if(currentDroppable != droppableBelow) {
+                  if (currentDroppable) {
+                    // null when we were not over a droppable before this event 
+                    leaveDroppable(currentDroppable);
+                  }
+                  currentDroppable = droppableBelow;
+                  if (currentDroppable) {
+                    // null if we're not coming over a droppable now
+                    enterDroppable(currentDroppable);
+                  }
+              }
+            }
+            
+
+            // (3) перемещать по экрану
+            document.addEventListener('mousemove', onMouseMove);
+          
+            // (4) положить мяч, удалить более ненужные обработчики событий
+            ball.onmouseup = function() {
+              document.removeEventListener('mousemove', onMouseMove);
+              ball.onmouseup = null;
+            };
+          
+          };
+    </script>
+</body>
+
+

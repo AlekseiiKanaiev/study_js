@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>3.2-hover-intent</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="./3.2-hoverintent.js"></script>
+  <script src="https://js.cx/test/libs.js"></script>
+  <!-- <script src="test.js"></script> -->
+</head>
+
+<body>
+    <style>
+        .hours {
+            color: red;
+          }
+          
+          .minutes {
+            color: green;
+          }
+          
+          .seconds {
+            color: blue;
+          }
+          
+          .clock {
+            border: 1px dashed black;
+            padding: 5px;
+            display: inline-block;
+            background: yellow;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+          
+          .tooltip {
+            position: absolute;
+            background: #eee;
+            border: 1px brown solid;
+            padding: 3px;
+          }
+          
+    </style>
+  <div id="elem" class="clock">
+    <span class="hours">12</span> :
+    <span class="minutes">30</span> :
+    <span class="seconds">00</span>
+  </div>
+
+  <div id="tooltip" class = "tooltip" hidden>Подсказка</div>
+
+  <script>
+    // для демо
+    
+    let delay;
+    ///*
+    elem.addEventListener('mouseenter', () => {
+        delay = setTimeout(() => {
+            tooltip.hidden = false;
+            tooltip.style.top = elem.offsetHeight + elem.offsetTop + 5 + 'px';
+            tooltip.style.left = elem.offsetLeft + 5 + 'px'; 
+        }, 2000);
+    });
+    elem.addEventListener('mouseleave', () => {
+        if (delay) clearTimeout(delay);
+        tooltip.hidden = true;
+    });
+    //*/
+    /*
+    elem.addEventListener('mouseenter', () => {
+        setTimeout(function() {
+            console.log(1);
+            new HoverIntent({
+                elem,
+                over() {
+                tooltip.hidden = false;
+                },
+                out() {
+                tooltip.hidden = true;
+                }
+            });
+            }, 2000);
+    });
+    
+    
+    //let a = setTimeout(() => alert('time'), 4000);
+    //clearTimeout(a);
+    */
+  </script>
+
+</body>
+</html>

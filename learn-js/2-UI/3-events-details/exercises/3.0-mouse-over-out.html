@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    <style>
+        #text {
+            display: block;
+            height: 100px;
+            width: 456px;
+          }
+          
+          #table th {
+            text-align: center;
+            font-weight: bold;
+          }
+          
+          #table td {
+            width: 150px;
+            white-space: nowrap;
+            text-align: center;
+            vertical-align: bottom;
+            padding-top: 5px;
+            padding-bottom: 12px;
+            cursor: pointer;
+          }
+          
+          #table .nw {
+            background: #999;
+          }
+          
+          #table .n {
+            background: #03f;
+            color: #fff;
+          }
+          
+          #table .ne {
+            background: #ff6;
+          }
+          
+          #table .w {
+            background: #ff0;
+          }
+          
+          #table .c {
+            background: #60c;
+            color: #fff;
+          }
+          
+          #table .e {
+            background: #09f;
+            color: #fff;
+          }
+          
+          #table .sw {
+            background: #963;
+            color: #fff;
+          }
+          
+          #table .s {
+            background: #f60;
+            color: #fff;
+          }
+          
+          #table .se {
+            background: #0c3;
+            color: #fff;
+          }
+          
+          #table .highlight {
+            background: red;
+          }
+          
+    </style>
+
+  <table id="table">
+    <tr>
+      <th colspan="3">Квадрат <em>Bagua</em>: Направление, Элемент, Цвет, Значение</th>
+    </tr>
+    <tr>
+      <td class="nw"><strong>Северо-Запад</strong>
+        <br>Металл
+        <br>Серебро
+        <br>Старейшины
+      </td>
+      <td class="n"><strong>Север</strong>
+        <br>Вода
+        <br>Синий
+        <br>Перемены
+      </td>
+      <td class="ne"><strong>Северо-Восток</strong>
+        <br>Земля
+        <br>Жёлтый
+        <br>Направление
+      </td>
+    </tr>
+    <tr>
+      <td class="w"><strong>Запад</strong>
+        <br>Металл
+        <br>Золото
+        <br>Молодость
+      </td>
+      <td class="c"><strong>Центр</strong>
+        <br>Всё
+        <br>Пурпурный
+        <br>Гармония
+      </td>
+      <td class="e"><strong>Восток</strong>
+        <br>Дерево
+        <br>Синий
+        <br>Будущее
+      </td>
+    </tr>
+    <tr>
+      <td class="sw"><strong>Юго-Запад</strong>
+        <br>Земля
+        <br>Коричневый
+        <br>Спокойствие
+      </td>
+      <td class="s"><strong>Юг</strong>
+        <br>Огонь
+        <br>Оранжевый
+        <br>Слава
+      </td>
+      <td class="se"><strong>Юго-Восток</strong>
+        <br>Дерево
+        <br>Зеленый
+        <br>Роман
+      </td>
+    </tr>
+
+  </table>
+
+  <script>
+  // ячейка <td> под курсором в данный момент (если есть)
+  let currentElem = null;
+
+  table.onmouseover = function(event) {
+    let target = event.target.closest('td');
+    // перед тем, как войти на следующий элемент, курсор всегда покидает предыдущий
+    // если currentElem есть, то мы ещё не ушли с предыдущего <td>,
+    // это переход внутри - игнорируем такое событие
+    // переход не на <td> - игнорировать
+    // переход на <td>, но вне нашей таблицы (возможно при вложенных таблицах)
+    // игнорировать
+    if(!currentElem && target && table.contains(target)){
+      // ура, мы зашли на новый <td>
+        currentElem = target;
+        target.style.background = 'pink';
+    }
+  };
+
+
+  table.onmouseout = function(event) {
+    // если мы вне <td>, то игнорируем уход мыши
+    // это какой-то переход внутри таблицы, но вне <td>,
+    // например с <tr> на другой <tr>
+    if (!currentElem) return;
+
+    // мы покидаем элемент – но куда? Возможно, на потомка?
+    let relatedTarget = event.relatedTarget;
+
+    while (relatedTarget) {
+      // поднимаемся по дереву элементов и проверяем – внутри ли мы currentElem или нет
+      // если да, то это переход внутри элемента – игнорируем
+      if (relatedTarget == currentElem) return;
+
+      relatedTarget = relatedTarget.parentNode;
+    }
+
+    // мы действительно покинули элемент
+    currentElem.style.background = '';
+    currentElem = null;
+  };
+
+  </script>
+
+</body>
+</html>
