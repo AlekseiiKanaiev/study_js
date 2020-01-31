@@ -3,12 +3,6 @@
         body{
             height: 1000px;
         }
-        #ball{
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: brown;
-        }
         #container{
             width: 100px;
             height: 100px;
@@ -18,7 +12,9 @@
         }
     </style>
     <div id="content">
-        <div id="ball"></div>
+        <div id="ball">
+            <img src="https://en.js.cx/clipart/ball.svg">
+        </div>
     </div>
     <div id="container" class="droppable">
 
@@ -26,7 +22,7 @@
     <!-- <button id = 'button'>Push</button> -->
     <script>
         console.dir(window);
-
+        console.log(document.body.clientWidth)
         let currentDroppable = null;
 
         function getScrollBarWidth(){
@@ -53,9 +49,10 @@
 
         ball.ondragstart = function() {
             return false;
-          };
+        };
 
-        ball.onmousedown = function(event) { // (1) отследить нажатие
+        ball.addEventListener('mousedown', (event) => {
+            // (1) отследить нажатие
             content.style.height = ball.offsetHeight + 'px';
 
             //  для удерживания мяча в любой точке
@@ -116,16 +113,19 @@
             }
             
 
-            // (3) перемещать по экрану
-            document.addEventListener('mousemove', onMouseMove);
-          
-            // (4) положить мяч, удалить более ненужные обработчики событий
-            ball.onmouseup = function() {
-              document.removeEventListener('mousemove', onMouseMove);
-              ball.onmouseup = null;
-            };
-          
-          };
+           // (3) перемещать по экрану
+           document.addEventListener('mousemove', onMouseMove);
+       
+           // (4) положить мяч, удалить более ненужные обработчики событий
+           function onMouseUp(){
+               document.removeEventListener('mousemove', onMouseMove);
+               console.dir(currentDroppable);
+               if (currentDroppable) currentDroppable.append(ball);
+               ball.removeEventListener('mouseup', onMouseUp)
+           }
+           ball.addEventListener('mouseup', onMouseUp);
+       });
+
     </script>
 </body>
 

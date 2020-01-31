@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    <style>
+        .slider {
+            border-radius: 5px;
+            background: #E0E0E0;
+            background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+            width: 310px;
+            height: 15px;
+            margin: auto;
+          }
+          
+          .thumb {
+            width: 10px;
+            height: 25px;
+            border-radius: 3px;
+            position: relative;
+            left: 10px;
+            top: -5px;
+            background: blue;
+            cursor: pointer;
+          }
+          
+    </style>
+
+    <div id="slider" class="slider">
+        <div class="thumb" id = "thumb"></div>
+    </div>
+
+  <script>
+    // ...ваш код...
+    thumb.ondragstart = () => false;
+    thumb.addEventListener('mousedown', (e) => {
+        
+        let shiftLeft = e.clientX - thumb.getBoundingClientRect().x;
+        
+        thumb.style.top = thumb.offsetTop + 'px';
+        thumb.style.position = 'absolute';
+        thumb.style.zIndex = 1000;
+        thumb.style.cursor = 'grabbing';
+        
+        move(e.pageX);
+
+        function move(pageX) {
+            let left = pageX - shiftLeft;
+            let maxRight = slider.offsetLeft + slider.offsetWidth - thumb.offsetWidth;
+            if (left < slider.offsetLeft) {
+                thumb.style.left = slider.offsetLeft + 'px';
+            } else if (left > maxRight){
+                thumb.style.left = maxRight + 'px';
+            } else {
+                thumb.style.left = left + 'px';
+            }
+        }
+
+        function onMouseMove(event) {
+            move(event.pageX);
+        }
+
+        slider.addEventListener('mousemove', onMouseMove);
+
+        function onMouseUp(){
+            slider.removeEventListener('mousemove', onMouseMove);
+            slider.removeEventListener('mouseup', onMouseUp);
+            thumb.style.cursor = '';
+        }
+    
+        document.addEventListener('mouseup', onMouseUp);
+    });
+    
+  </script>
+
+</body>
+</html>
