@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    <style>
+        body{
+        }
+        .date{
+            margin: 40px;
+        }
+    </style>
+    <h1>Прокрути меня</h1>
+
+<script>
+    // ... ваш код ...
+    console.log(window)
+    console.log(document.documentElement.offsetHeight)
+    let curTop = window.scrollY;
+    function addTimeDiv(){
+        let div = document.createElement('div');
+        div.innerHTML = new Date();
+        div.classList = 'date'
+        document.body.append(div);
+    }
+
+    while(window.innerHeight > document.documentElement.offsetHeight){
+        addTimeDiv()
+    }
+
+    document.addEventListener('scroll', (e) => {
+        console.log(window.scrollY);
+        console.log(document.documentElement.offsetHeight - window.innerHeight);
+        console.log('------------------');
+        if (document.documentElement.offsetHeight - window.innerHeight <= window.scrollY){
+            addTimeDiv();
+        }
+        
+    });
+</script>
+
+</body>
+</html>

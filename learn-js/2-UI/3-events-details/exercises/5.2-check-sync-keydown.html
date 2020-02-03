@@ -1,0 +1,16 @@
+<script>
+    function runOnKeys(func, ...args){
+        console.log(...args);
+        func();
+        keySet.clear();
+    }
+    let keySet = new Set();
+    let rule = ['KeyQ', 'KeyW'];
+    document.addEventListener('keydown', (e) => {
+        keySet.add(e.code);
+        if (rule.every(key => keySet.has(key))) runOnKeys(() => alert('Hello!'), ...rule)
+    });
+    document.addEventListener('keyup', (e) => {
+        keySet.clear();
+    });
+</script>
