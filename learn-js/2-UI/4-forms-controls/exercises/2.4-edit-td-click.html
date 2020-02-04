@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+    <style>
+        .view{
+            display: block;
+            height: 100px;
+            width: 170px;
+            resize: none;
+            position: relative;
+            border: none;
+            padding: 0;
+            margin: 0;
+            outline: none;
+            overflow: auto;
+        }
+        table div button{
+          position: absolute;
+        }
+        th{
+            text-align: center;
+            font-weight: bold;
+        }
+        td{
+            width: 150px;
+            white-space: nowrap;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+        }
+        .nw{
+            background: #999;
+        }
+        .n{
+            background: #03f;
+            color: #fff;
+        }
+        .ne{
+            background: #ff6;
+        }
+        .w {
+            background-color: #ff0;
+        }
+        
+        .c {
+          background-color: #60c;
+          color: #fff;
+        }
+        
+        .e {
+          background-color: #09f;
+          color: #fff;
+        }
+        
+        .sw {
+          background-color: #963;
+          color: #fff;
+        }
+        
+        .s {
+          background-color: #f60;
+          color: #fff;
+        }
+        
+        .se {
+          background-color: #0c3;
+          color: #fff;
+        }
+    </style>
+
+  <p>Кликните на ячейку таблицы, чтобы отредактировать её. Нажмите ОК или ОТМЕНА, когда закончите.</p>
+
+  <table id="bagua-table">
+    <tr>
+      <th colspan="3">Квадрат <em>Bagua</em>: Направление, Элемент, Цвет, Значение</th>
+    </tr>
+    <tr>
+      <td class="nw"><strong>Северо-Запад</strong>
+        <br>Металл
+        <br>Серебро
+        <br>Старейшины
+      </td>
+      <td class="n"><strong>Север</strong>
+        <br>Вода
+        <br>Синий
+        <br>Перемены
+      </td>
+      <td class="ne"><strong>Северо-Восток</strong>
+        <br>Земля
+        <br>Жёлтый
+        <br>Направление
+      </td>
+    </tr>
+    <tr>
+      <td class="w"><strong>Запад</strong>
+        <br>Металл
+        <br>Золото
+        <br>Молодость
+      </td>
+      <td class="c"><strong>Центр</strong>
+        <br>Всё
+        <br>Пурпурный
+        <br>Гармония
+      </td>
+      <td class="e"><strong>Восток</strong>
+        <br>Дерево
+        <br>Синий
+        <br>Будущее
+      </td>
+    </tr>
+    <tr>
+      <td class="sw"><strong>Юго-Запад</strong>
+        <br>Земля
+        <br>Коричневый
+        <br>Спокойствие
+      </td>
+      <td class="s"><strong>Юг</strong>
+        <br>Огонь
+        <br>Оранжевый
+        <br>Слава
+      </td>
+      <td class="se"><strong>Юго-Восток</strong>
+        <br>Дерево
+        <br>Зеленый
+        <br>Роман
+      </td>
+    </tr>
+
+</table>
+
+<script>
+    let focus = null;
+    let text = '';
+    let table = document.getElementById('bagua-table');
+    // document.querySelectorAll('td').forEach(el => el.tabIndex = -1);
+    
+    function apply(elem){
+        focus.innerHTML = text;
+        elem.replaceWith(focus);
+        focus = null;
+    }
+    
+    table.addEventListener('click', (e) => {
+        //console.log(e);
+        let target = e.target;
+        //console.log(target);
+        if (target.nodeName !== 'TD' || !table.contains(target) || focus) return;
+        
+        focus = target;
+         
+        let div = document.createElement('div');
+        let textarea = document.createElement('textarea');
+        let butOk = document.createElement('button');
+        let butCancel = document.createElement('button');
+
+        textarea.classList.add('view')
+        textarea.innerHTML = target.innerHTML;
+        textarea.style.height = target.clientHeight + 'px';
+        textarea.style.width = target.clientWidth + 'px';
+        text = textarea.value;
+
+        butOk.innerHTML = 'Ok';
+        butOk.onclick = () => {
+          text = textarea.value;
+          apply(div);
+        };
+        
+        butCancel.innerHTML = 'Cancel';
+        butCancel.onclick = () => {
+          apply(div);
+        };
+
+        div.append(textarea, butOk, butCancel);
+
+        target.replaceWith(div);
+        butOk.style.top = textarea.offsetTop + textarea.offsetHeight + 2 + 'px';
+        butCancel.style.top = textarea.offsetTop + textarea.offsetHeight + 2 + 'px';
+        butCancel.style.left = butOk.offsetLeft + butOk.offsetWidth + 5 + 'px';
+        textarea.focus();
+    });
+</script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,37 @@
+<style>
+    .view{
+        height: 100px;
+        width: 200px;
+        border: 1px solid #000;
+        text-align: left;
+        display: block;
+        align-content: left;
+        padding: 0px;
+    }
+</style>
+<p>
+    You can edit div below
+</p>
+<div id = "edit" class="view">
+    Enter your html
+</div>
+<script>
+    let textarea = document.createElement('textarea');
+    let edit = document.getElementById('edit');
+    
+    function onBlur() {
+        edit.innerHTML = textarea.value;
+        textarea.replaceWith(edit);
+    }
+
+    edit.tabIndex = 1;
+    edit.onfocus = () => {
+        textarea.id = 'textarea';
+        textarea.classList = 'view';
+        textarea.value = edit.innerHTML.trim();
+        textarea.onblur = onBlur;
+        textarea.onkeydown = function (e) {if (e.key === 'Enter') this.blur()};
+        edit.replaceWith(textarea);
+        textarea.focus();
+    };
+</script>

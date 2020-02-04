@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #mouse {
+      display: inline-block;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    #mouse:focus {
+      outline: 1px dashed black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>Кликните по "изображению" мыши и перемещайте её с помощью клавиш со стрелками.</p>
+
+  <pre id="mouse">
+ _   _
+(q\_/p)
+ /. .\
+=\_t_/=   __
+ /   \   (
+((   ))   )
+/\) (/\  /
+\  Y  /-'
+ nn^nn
+</pre>
+
+
+  <script>
+    // ...ваш код...
+    let mouse = document.getElementById('mouse');
+    mouse.tabIndex = 1;
+
+    function getScrollBarWidth(){
+        return window.innerWidth - document.documentElement.offsetWidth;
+    }
+
+    function move(event){
+        getScrollBarWidth();
+        mouse.style.position = 'absolute';
+        switch (event.key){
+            case 'Down':
+            case 'ArrowDown':
+                mouse.style.top = mouse.offsetTop + 10 + 'px';
+                break;
+            case 'Up':
+            case 'ArrowUp':
+                if (mouse.offsetTop > 10) mouse.style.top = mouse.offsetTop - 10 + 'px';
+                break;
+            case 'Left':
+            case 'ArrowLeft':
+                if (mouse.offsetLeft > 10) mouse.style.left = mouse.offsetLeft - 10 + 'px';
+                break;
+            case 'Right':
+            case 'ArrowRight':
+                if (mouse.offsetLeft + mouse.offsetWidth + getScrollBarWidth() + 10 < window.innerWidth) mouse.style.left = mouse.offsetLeft + 10 + 'px';
+                break;
+        }
+    }
+    
+    mouse.addEventListener('focusin', () => {
+        mouse.addEventListener('keydown', move);
+    });
+  </script>
+
+</body>
+
+</html>
