@@ -45,7 +45,7 @@ Your email: <input type = "email" id = "input">
         }
     };
 
-    input.onfucus = () => {
+    input.onfocus = () => {
         if (input.classList.contains('invalid')){
             // удаляем индикатор ошибки, т.к. пользователь хочет ввести данные заново
             input.classList.remove('invalid');

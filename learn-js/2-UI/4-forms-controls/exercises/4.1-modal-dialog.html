@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.1-modal-dialog</title>
+</head>
+<body>
+    <style>
+        body{
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            text-align: center;
+        }
+        .my-form{
+            position: fixed;
+            border: 2px solid #000;
+            border-radius: 10px;
+            width: fit-content;
+            height: fit-content;
+            padding: 20px;
+            background-color: #ccc;
+            z-index: 2000;
+        }
+        .my-form input {
+            margin-top: 10px;
+        }
+        .cover{
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+        }
+        .hidden{
+            display: 'none';
+        }
+    </style>
+        <div id="content">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic ex quam ipsa quibusdam ratione, beatae laudantium iusto. Ea dignissimos soluta, illo vel quaerat aut porro expedita numquam sed harum saepe aliquam consequuntur error corporis laudantium, sapiente modi tempora? Excepturi animi, impedit nulla voluptates nam nostrum. Dolorum delectus nam ut possimus, facilis tempore ipsam doloribus soluta autem incidunt aliquid voluptates sint voluptate totam, aspernatur ad. Laborum error reiciendis nulla fugiat facilis architecto ratione. Tempore eum corporis quas veritatis facilis dolorum perspiciatis et aliquid, ab ex, aut atque magni laborum cum quae a expedita ipsam perferendis, excepturi fuga tenetur. Error, non modi.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia praesentium labore facilis nemo voluptas sint accusamus maxime soluta debitis qui, hic doloremque modi aspernatur? Hic quia eveniet tempore beatae reprehenderit quos consectetur placeat. Quibusdam perspiciatis commodi impedit modi, reprehenderit dicta in amet sequi debitis veritatis soluta molestias rem ea accusamus voluptatum labore minus error. Vero quia quis tenetur explicabo, fugiat, quisquam quod, sed voluptatem illo cupiditate facilis neque animi reiciendis. Quae veniam dolore, at repudiandae porro fugit delectus ipsam natus, deserunt dolores voluptatibus harum aperiam sunt perspiciatis itaque autem totam doloribus animi error non quo magni. Ut dolor distinctio, non eos assumenda impedit! Laborum amet, praesentium distinctio ratione fugit totam cumque sunt in incidunt provident explicabo aliquid culpa aliquam magni enim alias pariatur, ipsa autem ipsum rerum. Tenetur, nihil excepturi modi maxime quibusdam porro atque nisi adipisci, iusto recusandae consectetur ea perferendis doloremque velit dignissimos nemo repellendus libero quidem? Rerum, deserunt. Corporis, natus saepe laudantium doloremque perferendis modi illum quod corrupti ullam eaque dolore a, ut cupiditate dolores repellendus quo. Ab magni illo consequatur soluta repellat ipsam quisquam ut minus ex, quaerat pariatur omnis impedit minima aliquam ipsa perferendis deleniti praesentium tenetur neque nobis error odio quidem assumenda! Vitae ut quidem amet nam nihil saepe eos officia delectus rerum mollitia maiores voluptatibus consectetur, perspiciatis tempore cumque sapiente facere iure autem! Error vitae dolore ratione impedit omnis delectus tempore reprehenderit laboriosam fugiat! Dolores ea error maxime repudiandae tempore voluptatem doloribus architecto temporibus mollitia. Voluptatibus accusantium nesciunt, odio quis debitis iusto dolorum temporibus at earum praesentium tenetur voluptate officiis. Doloremque error ullam velit architecto officia animi perspiciatis repudiandae. Iste veniam quidem ad modi vero dignissimos odit, sint quod aspernatur a in velit, ratione corrupti excepturi obcaecati libero? Repellat placeat quibusdam, ea repellendus possimus esse, aut saepe veritatis perspiciatis quos illum quisquam ad neque at aspernatur magnam quam cum praesentium ab provident doloribus illo quo eaque incidunt. Magni voluptate aperiam eum neque omnis unde assumenda porro illo, nobis, inventore nesciunt magnam consectetur earum accusamus doloribus. Quo est ab maxime fugit, provident dignissimos ipsa molestiae veniam quae adipisci neque consequuntur facilis exercitationem reprehenderit asperiores a nihil tenetur nobis nemo odio, totam animi magni? Aliquam unde eos, harum totam temporibus excepturi pariatur similique tenetur esse exercitationem voluptatibus. Porro veniam officia accusamus fugiat aut, exercitationem ullam reprehenderit aspernatur, inventore, harum saepe totam amet! Iusto vitae totam possimus sint illum, aspernatur temporibus fuga consequuntur eius, similique, voluptas numquam quasi! Eum ut explicabo illum nostrum ipsam laboriosam dicta, temporibus repellendus eius cum placeat maiores mollitia vero? Ullam, aliquid facilis? Corporis voluptatibus accusantium nihil in illum quo exercitationem est quasi pariatur facilis asperiores sit eum, sequi ab quidem! Soluta et corporis, enim laudantium odio nulla libero eligendi facere corrupti, neque maxime impedit explicabo distinctio adipisci earum quam, dolor ratione nostrum quia expedita itaque repellendus ut quidem vitae? Laboriosam quam repellat quisquam quo officiis molestias optio itaque exercitationem distinctio, deserunt vitae dolor perferendis deleniti, odio quis fugiat id tenetur culpa unde praesentium veritatis, suscipit aut. Dolore quibusdam consequuntur omnis quam aut autem sint impedit non laboriosam obcaecati nam, ab labore aperiam corporis temporibus deleniti ratione dicta, quisquam nulla tempore ea dolor harum, quos iusto. Accusantium numquam rem culpa quos voluptatum quis quisquam ducimus possimus! Possimus fugiat saepe pariatur tempora dolore eius dolorum omnis sit iste minima accusantium autem voluptates excepturi explicabo odit maiores placeat perspiciatis totam exercitationem reprehenderit modi maxime, ad vero molestiae. Nulla commodi consequuntur excepturi culpa, illum fugit labore et! Adipisci quasi sunt, sit nostrum, porro earum distinctio doloribus consectetur, voluptate ullam harum explicabo aspernatur impedit accusantium? Similique praesentium doloribus, officiis dolorum commodi error corporis accusamus saepe est facilis molestias, minus sapiente vero incidunt ad. Veniam quos aliquid, voluptatem unde impedit voluptates animi quod, amet, reprehenderit cum quisquam dolores hic itaque dolorum tempore temporibus illo pariatur consequuntur quaerat accusamus repellat eum molestiae! Doloribus labore harum deleniti corrupti maiores illum architecto recusandae facilis laudantium unde mollitia temporibus, quia tempore rem aspernatur facere inventore nisi praesentium accusamus animi qui officiis? Hic laboriosam ipsam cupiditate. Asperiores aliquam fugit quidem commodi similique deserunt nisi iure consectetur perferendis repellendus itaque dolor praesentium omnis exercitationem, molestiae provident. Delectus inventore iste, odit ea sed quas debitis at ipsum quis molestias laudantium et illo ipsa cum, voluptatem cumque cupiditate, ut quisquam voluptatibus placeat labore! Voluptatum numquam, minus quia laboriosam debitis consequatur molestiae dolore mollitia magnam in. Nesciunt, culpa incidunt vel tempora omnis nulla earum quae dolore accusantium magni esse hic neque reiciendis fuga voluptatem. Impedit laborum dolorem eum adipisci temporibus sit, doloremque labore modi blanditiis accusantium. Culpa eos ipsum quas in illum, sed porro accusantium nemo pariatur voluptatum dignissimos illo veniam praesentium adipisci neque cupiditate ea commodi quam non! Adipisci fugit natus esse quidem iste quia placeat. Dolorum ipsam dolores tenetur inventore cupiditate placeat sit autem quaerat voluptas accusamus quae velit pariatur itaque omnis, dolore laudantium eveniet numquam? Beatae nostrum laudantium quas ex dicta nesciunt? Dicta id voluptatem inventore dolorem accusamus! Id itaque, sed asperiores possimus illo et, reprehenderit ratione sapiente libero, qui mollitia odit inventore rem quod quidem maxime voluptatum perspiciatis. Blanditiis sapiente, est nihil recusandae rem doloremque obcaecati nulla corporis et pariatur voluptate enim tempora! In laudantium laboriosam veritatis dicta aperiam, enim blanditiis beatae possimus delectus recusandae nam at voluptatum alias rem, autem vel. Tempore, hic sit vero aspernatur doloremque ducimus in consectetur qui molestiae, facere eaque repellendus natus esse, voluptas quos nulla neque optio id. Facere numquam rem commodi sunt enim ullam laboriosam vitae possimus animi neque rerum amet fuga itaque ipsam beatae magni omnis, pariatur sed aspernatur nam. Voluptates dolorem velit eaque ipsa, consequuntur ex debitis mollitia assumenda atque repudiandae pariatur doloribus reprehenderit voluptate! Quod itaque, ipsum corrupti accusamus eligendi dolor provident quae facere quas, suscipit ut! Doloremque beatae sequi animi consectetur expedita tempore, asperiores voluptas consequatur placeat accusantium aspernatur repellat temporibus, ducimus totam consequuntur sint quis libero saepe eum aliquid quibusdam quam? Similique corporis repellendus magni provident ipsum nesciunt, quam ratione nulla reprehenderit optio illo dolores facilis delectus facere explicabo pariatur a suscipit nostrum voluptatum, laboriosam impedit blanditiis repudiandae tempora voluptates?
+        </div>
+        <div id="cover" class="cover"></div>
+    <script>
+        let isOk = false;
+
+
+        function showPrompt(html, func){
+
+            function apply(text){
+                func(text);
+                //form.remove();
+                box.style.display = 'none';
+                document.body.style.overflowY = '';
+                document.onkeydown = null;
+            }
+
+            document.onkeydown = (e) => {
+                if (e.key === 'Escape'){
+                    apply(null);
+                }
+            };
+
+            document.body.style.overflowY = 'hidden';
+
+            let box = document.getElementById('cover');
+            //console.dir(box);
+            let form = document.createElement('form');
+            form.classList.add('my-form');
+            form.innerHTML = `${html}<br>`;
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                apply(form.message.value);
+            };
+            form.addEventListener('keydown', (e) => {
+                //console.log(e)
+                if (e.key === 'Tab'){
+                    e.preventDefault();
+                    let inputs = Array.from(form.querySelectorAll('input'));
+                    let elCount = inputs.length;
+                    let curIndex = inputs.indexOf(e.target);
+                    let newIndex = e.shiftKey ? ((curIndex >= 1) ? curIndex - 1 : elCount - 1) : (curIndex + 1) % elCount;
+                    inputs[newIndex].focus();
+                }
+            });
+            
+
+            let input = document.createElement('input');
+            input.type = "text";
+            input.name = "message";
+            input.autofocus = true;
+            
+            let butOk = document.createElement('input');
+            butOk.type = "submit";
+            butOk.value = 'Ok';
+            
+            let butCancel = document.createElement('input');
+            butCancel.type = "button";
+            butCancel.value = "Cancel";
+            butCancel.onclick = () => {
+                apply(null);
+            };
+            
+            form.append(input, butOk, butCancel)
+            box.append(form);
+            form.style.top = (window.innerHeight - form.offsetHeight) / 2 + 'px';
+        }
+
+        showPrompt("Введите что-нибудь<br>...умное :)", function(value) {
+            alert(value);
+        });
+    </script>
+</body>
+</html>
+
