@@ -1,0 +1,47 @@
+<p id="p">Example: <i>italic</i> and <b>bold</b></p>
+
+<p id = "result"></p>
+<script>
+    let range = new Range();
+
+    // Каждый описанный метод представлен здесь:
+    let methods = {
+        deleteContents(){
+            range.deleteContents();
+        },
+        extractContents(){
+            let content = range.extractContents();
+            result.innerHTML = '';
+            result.append("Extacted: ", content);
+        },
+        cloneContents(){
+            let content = range.cloneContents();
+            result.innerHTML = '';
+            result.append("Cloned: ", content);
+        },
+        insertNode(){
+            let newNode = document.createElement('u');
+            newNode.innerHTML = "NEW NODE";
+            range.insertNode(newNode);
+        },
+        surroundContents(){
+            let newNode = document.createElement('u');
+            try {
+                range.surroundContents(newNode);
+            } catch(e) { alert(e); }
+        },
+        resetExample(){
+            p.innerHTML = `Example: <i>italic</i> and <b>bold</b>`;
+            result.innerHTML = '';
+            range.setStart(p.firstChild, 0);
+            range.setEnd(p, 4);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+        }
+    };
+
+    for (let method in methods){
+        document.write(`<div><button onclick="methods.${method}()">${method}</button></div>`)
+    }
+    methods.resetExample();
+</script>

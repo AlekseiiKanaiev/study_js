@@ -1,0 +1,36 @@
+<script src="https://prismjs.com" crossorigin="anonymous"></script>
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>1.0-mutation-observer</title>
+</head>
+<body>
+    
+    <div id="elem" contenteditable>
+        Отредактируй <b>меня</b>, пожалуйста
+    </div>
+    <pre class="language-javascript">
+        <code>
+            // вот код
+            let hello = "world";
+        </code>
+    </pre>
+    
+    <script>
+        let observer = new MutationObserver(MutationRecord => {
+            console.log(MutationRecord); // // console.log(изменения)
+        });
+    
+        // наблюдать за всем, кроме атрибутов
+        observer.observe(elem, {
+            childList: true, // наблюдать за непосредственными детьми
+            subtree: true, // и более глубокими потомками
+            characterDataOldValue: true, // передавать старое значение в колбэк
+        });
+        Prism.highlightElement(pre);
+    </script>
+</body>
+</html> -->
